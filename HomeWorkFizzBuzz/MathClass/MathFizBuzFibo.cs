@@ -54,33 +54,32 @@ namespace MathClass
 
 		private async Task<string> Result(int[] array, int firstValue = 3, int secondValue = 5)
 		{
-
 			string result = "";
-			foreach (int element in array)
+
+			await Task.Run(() =>
 			{
-				if (((element % firstValue) == 0) && ((element % secondValue) == 0))
+			
+				foreach (int element in array)
 				{
-					result += "FizzBuzz";
+					if (((element % firstValue) == 0) && ((element % secondValue) == 0))
+					{
+						result += "FizzBuzz";
+					}
+					else if ((element % firstValue) == 0)
+					{
+						result += "Fizz";
+					}
+					else if ((element % secondValue) == 0)
+					{
+						result += "Buzz";
+					}
+					else
+					{
+						result += $"{element}";
+					}
 				}
-				else if ((element % firstValue) == 0)
-				{
-					result += "Fizz";
-				}
-				else if ((element % secondValue) == 0)
-				{
-					result += "Buzz";
-				}
-				else
-				{
-					result += $"{element}";
-				}
-			}
-			await AsyncSimulation();
+			});
 			return result;
-		}
-		private async Task AsyncSimulation()
-		{
-			await Task.Run(() => Thread.Sleep(1));
 		}
 
 		public static int Fibonachi(int n)
