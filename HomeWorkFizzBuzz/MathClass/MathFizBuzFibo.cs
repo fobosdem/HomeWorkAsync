@@ -58,7 +58,6 @@ namespace MathClass
 
 			await Task.Run(() =>
 			{
-			
 				foreach (int element in array)
 				{
 					if (((element % firstValue) == 0) && ((element % secondValue) == 0))
